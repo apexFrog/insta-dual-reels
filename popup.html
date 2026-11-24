@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dual Reels</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 280px;
+      padding: 16px;
+      background: #101216;
+      color: #f3f5f8;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    h1 { font-size: 15px; font-weight: 700; }
+    .sub { font-size: 11px; color: #959eab; }
+    .primary-btn {
+      width: 100%;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0095f6, #5b51d8);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 12px;
+      transition: opacity 0.15s ease;
+    }
+    .primary-btn:hover { opacity: 0.92; }
+    .primary-btn.active {
+      background: #2b2f38;
+      border: 1px solid rgba(255, 59, 92, 0.55);
+      color: #ff7a92;
+    }
+    .section {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    .row:last-child { margin-bottom: 0; }
+    .toggle-btn {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .toggle-btn.on {
+      background: rgba(0, 149, 246, 0.28);
+      border-color: #0095f6;
+      color: #7cc8ff;
+    }
+    .audio-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+      margin-top: 6px;
+    }
+    .audio-btn {
+      padding: 5px 0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 7px;
+      background: transparent;
+      color: #b7bec9;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .audio-btn.active {
+      background: #fff;
+      color: #101216;
+      border-color: #fff;
+    }
+    .keys {
+      font-size: 11px;
+      color: #8f98a6;
+      line-height: 1.55;
+    }
+    .keys kbd {
+      background: rgba(255, 255, 255, 0.1);
+      color: #e6ebf2;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 10px;
+    }
+    #status-msg {
+      font-size: 11px;
+      color: #f59e0b;
+      margin-bottom: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">2×</div>
+    <div>
+      <h1>Dual Reels</h1>
+      <div class="sub">2 рилса одновременно в Instagram</div>
+    </div>
+  </div>
+
+  <div id="status-msg">Откройте instagram.com/reels/ чтобы включить Dual Reels.</div>
+
+  <button id="btn-toggle" class="primary-btn">Включить Dual Reels</button>
+
+  <div class="section">
+    <div class="row">
+      <span>Прокрутка</span>
+      <button id="btn-sync" class="toggle-btn on">Вместе</button>
+    </div>
+    <div class="row">
+      <span>Лента</span>
+      <button id="btn-queue" class="toggle-btn on">Буфер (20+)</button>
+    </div>
+    <div class="row" style="margin-bottom: 4px;">
+      <span>Звук</span>
+    </div>
+    <div class="audio-row">
+      <button class="audio-btn" data-audio="left">Л</button>
+      <button class="audio-btn" data-audio="right">П</button>
+      <button class="audio-btn" data-audio="both">Оба</button>
+      <button class="audio-btn" data-audio="hover">Hover</button>
+      <button class="audio-btn" data-audio="mute">🔇</button>
+    </div>
+  </div>
+
+  <div class="section keys">
+    <div><kbd>S</kbd> Вместе / Отдельно &nbsp; <kbd>Q</kbd> Буфер / Живая</div>
+    <div><kbd>L</kbd> Лайк обоим &nbsp; <kbd>↑</kbd><kbd>↓</kbd> Листать &nbsp; <kbd>Space</kbd> Пауза</div>
+    <div><kbd>1</kbd> Л &nbsp; <kbd>2</kbd> П &nbsp; <kbd>3</kbd> Оба &nbsp; <kbd>4</kbd> Hover &nbsp; <kbd>Esc</kbd> Выход</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
